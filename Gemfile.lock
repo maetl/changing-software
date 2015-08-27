@@ -1,0 +1,81 @@
+GEM
+  specs:
+    abstract_type (0.0.7)
+    activesupport (4.2.4)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    adamantium (0.2.0)
+      ice_nine (~> 0.11.0)
+      memoizable (~> 0.4.0)
+    axiom (0.2.0)
+      abstract_type (~> 0.0.7)
+      adamantium (~> 0.2.0)
+      axiom-types (~> 0.1.0)
+      descendants_tracker (~> 0.0.3)
+      equalizer (~> 0.0.9)
+    axiom-memory-adapter (0.2.1)
+      axiom (~> 0.2.0)
+      thread_safe (~> 0.3, >= 0.3.1)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
+    equalizer (0.0.11)
+    hashie (3.4.2)
+    i18n (0.7.0)
+    ice_nine (0.11.1)
+    json (1.8.3)
+    mementus (0.1.6)
+      axiom-memory-adapter
+      virtus
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
+    minitest (5.8.0)
+    mustache (1.0.1)
+    rack (1.6.4)
+    rake (10.4.2)
+    rom (0.9.1)
+      equalizer (~> 0.0, >= 0.0.9)
+      rom-mapper (~> 0.2, >= 0.2.0)
+      rom-support (~> 0.1, >= 0.1.0)
+      transproc (~> 0.3, >= 0.3.0)
+    rom-mapper (0.2.0)
+      equalizer (~> 0.0, >= 0.0.10)
+      rom-support (~> 0.1, >= 0.1.0)
+      transproc (~> 0.3)
+    rom-support (0.1.0)
+      wisper (~> 1.6, >= 1.6.0)
+    sprockets (3.3.3)
+      rack (~> 1.0)
+    thread_safe (0.3.5)
+    transproc (0.3.2)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
+    wisper (1.6.1)
+    yarrow (0.3.1)
+      activesupport
+      hashie
+      mementus
+      rack
+      sprockets
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mustache
+  rake
+  rom
+  yarrow

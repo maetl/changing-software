@@ -1,3 +1,14 @@
+GIT
+  remote: git@github.com:maetl/yarrow
+  revision: f292debc1325b7772c71f62babfa895c1ad64d24
+  specs:
+    yarrow (0.3.4)
+      activesupport
+      hashie
+      mementus
+      rack
+      sprockets
+
 GEM
   specs:
     abstract_type (0.0.7)
@@ -64,12 +75,6 @@ GEM
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
     wisper (1.6.1)
-    yarrow (0.3.1)
-      activesupport
-      hashie
-      mementus
-      rack
-      sprockets
 
 PLATFORMS
   ruby
@@ -78,4 +83,4 @@ DEPENDENCIES
   mustache
   rake
   rom
-  yarrow
+  yarrow!

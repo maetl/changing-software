@@ -1,6 +1,8 @@
 require 'yarrow'
 require 'yarrow/output/context'
+require 'yarrow/tools/output_file'
 require 'rom'
+require 'mustache'
 
 ROM.use :auto_registration
 
@@ -30,15 +32,33 @@ end
 
 $rom = ROM.finalize.env
 
+class SiteContext < Yarrow::Output::Context
+end
+
+def render_post(post)
+ context = SiteContext.new(:post => post)
+ template = File.read('templates/post.html')
+
+ Mustache.render(template, context)
+end
+
+def write_file(path, content)
+  document = Yarrow::Tools::OutputFile.new
+  document.write(path, content)
+end
+
 include Yarrow::Tools::FrontMatter
 
 task :collect do
   Dir['content/posts/*.md'].each do |path|
     content, data = extract_split_content(File.read(path, :encoding => 'utf-8'))
-    $rom.command(:posts).create.call(data.merge(body: content))
+    name = File.basename(path, '.md')
+    $rom.command(:posts).create.call(data.merge(body: content, name: name))
   end
 end
 
 task build: :collect do
-  puts $rom.relation(:posts).to_a
+  $rom.relation(:posts).as(:posts).each do |post|
+    write_file("/posts/#{post.name}/", render_post(post))
+  end
 end

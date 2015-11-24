@@ -1,0 +1,25 @@
+input_dir: content
+output_dir: public
+meta:
+  title: Changing Software
+  author: Mark Rickerby
+output:
+  target_dir: public
+  template_dir: templates
+  object_map:
+    page: Yarrow::Model::Site.pages
+assets:
+  input_dir: assets
+  output_dir: public/assets
+  append_paths:
+    - css
+    - js
+  manifest_file: manifest.json
+server:
+  port: 9000
+  host: localhost
+  handler: thin
+  middleware:
+    - Rack::ShowExceptions
+    - Rack::CommonLogger
+    - Rack::ContentLength

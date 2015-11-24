@@ -16,13 +16,13 @@ The word ‘endpoint’ is scattered everywhere you look throughout the descript
 
 Many programmers think of endpoints simply as HTTP accessible URLs, but other somewhat contradictory definitions exist. In the enterprise SOA world, there’s a nebulous definition of endpoint as the entry point to an implementation. In the Microsoft world, endpoint is an overloaded term, referring to both target devices for platform services and communications bindings for addressable services. [GitHub V3](http://developer.github.com/v3/) mentions endpoints and hypermedia in the same breath. Google has even modelled [entire services](https://developers.google.com/appengine/docs/python/endpoints/) on the concept. The fervid term has spread far and wide across the software industry, leaving [confusion and miscommunication](http://stackoverflow.com/questions/5034412/api-endpoint-semantics) in its wake.
 
-In common sense terms, most web APIs can easily be described as sets of endpoints. They have identifiers exposed as URLS which form the public surface area of their capabilities. Each URL generally exposes a specific entity within the host system which can receive messages in the form of HTTP requests.
+In common sense terms, web APIs can easily be described as sets of endpoints. They have identifiers exposed as URLS which form the public surface area of their capabilities. Each URL generally exposes a specific entity within the host system which can receive messages in the form of HTTP requests.
 
-It’s no coincidence that almost all APIs designed in this way rely on vast amounts of documentation and a myriad of HTTP clients and wrapping libraries in order to be used effectively.
+It’s no coincidence that almost all APIs designed this way rely on vast amounts of documentation and a myriad of HTTP clients and wrapping libraries in order to be used effectively.
 
 Such APIs seem to be constructed from the assumption that what clients want is the ability to query a data model defined as a bunch of nouns. But humans think in terms of processes and relationships; causes and effects. Most useful applications are designed around workflows, not just generic CRUD interactions.
 
-These human habits mean that when designing a service, it’s crucial to focus on the transitions between resources that model relationships where the purpose of a resource is defined by reference to other resources.
+These human habits mean that when designing a service, it’s crucial to focus on the transitions between states and relationships between resources. Resources are only meaningful in the context of other resources.
 
 > A truly RESTful API looks like hypertext. Every addressable unit of information carries an address, either explicitly (e.g., link and id attributes) or implicitly (e.g., derived from the media type definition and representation structure). Query results are represented by a list of links with summary information, not by arrays of object representations.
 > <br><br><cite><a href="http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven">Roy Fielding, REST APIs Must Be Hypertext Driven</a></cite>
@@ -33,20 +33,16 @@ This leaves many API designers stuck in a local maxima of the hypermedia maturit
 
 When a web API doesn’t provide workflow semantics or explicitly navigable state transitions, the same logic tends to end up duplicated on both sides of its interface. Inconsistencies, hacks and bugs proliferate.
 
-One of the reasons why so many developers misunderstand the importance of state machines in web APIs is because they’re locked in a mindset of thinking in endpoints, where the implicit RPC-style structure of resources as atomic, stand-alone types with a canonical URL guides client interactions.
+One of the reasons why so many developers misunderstand the importance of state machines in web APIs is because they’re locked in a mindset of thinking in endpoints, where the implicit RPC-style structure of resources as atomic, stand-alone types with a canonical URL guides client interactions. The idea of defining a contract between systems using media types rather than interfaces is foreign and obscure.
 
-From the perspective of mainstream object oriented languages, all problems need to be hit with the same hammer of abstract interface types with [verbs ordained by the Kingdom of Nouns](http://steve-yegge.blogspot.com.au/2006/03/execution-in-kingdom-of-nouns.html). The idea of defining a contract between systems using media types rather than interfaces is foreign and obscure.
-
-Developers who work on APIs at this level frequently dismiss critical perspectives on REST and hypermedia as “impractical” or “academic” because they don’t believe it’s worth the effort to understand, to the point where [those who might know better](https://github.com/intridea/grape) have said that REST is [“not a very good roadmap toward building APIs for web applications”](http://www.intridea.com/blog/2010/4/29/rest-isnt-what-you-think-it-is).
+Developers who work on APIs at this level frequently dismiss critical perspectives on REST and hypermedia as ‘impractical’ or ‘academic’ because they don’t believe it’s worth the effort to understand, to the point where [those who might know better](https://github.com/intridea/grape) have said that REST is [“not a very good roadmap toward building APIs for web applications”](http://www.intridea.com/blog/2010/4/29/rest-isnt-what-you-think-it-is).
 
 To be fair, the cryptic lexicon and haughty tone of many REST advocates hasn’t helped bridge the understanding gap. Many developers struggle to translate the formal constraints of REST into something they can build that actually makes sense. People’s impression of REST, HATEOAS, hypermedia and related concepts is often limited to the context of online arguments and flame wars over terminology, correctness, and [silver bullets](http://37signals.com/svn/posts/3373-getting-hyper-about-hypermedia-apis) rather than concrete use cases and practical advice.
 
 > We need to create an intellectual framework for API design that captures the spirit of how most popular web APIs are designed today.
 > <br><br><cite><a href="https://blog.apigee.com/detail/api_design_a_new_model_for_pragmatic_rest">Brian Mulloy, A New Model for Pragmatic REST</a></cite>
 
-I suggest that the basis of such an intellectual framework should start with the idea of workflows as state machines.
-
-Steve Klabnik has done a fantastic job of expressing this view in [Designing Hypermedia APIs](http://www.designinghypermediaapis.com/), but there’s still a paucity of explanations and examples of web APIs that demonstrate what this means in practice.
+I suggest that the basis of such an intellectual framework should start with the idea of workflows as state machines. Steve Klabnik has done a fantastic job of expressing this view in [Designing Hypermedia APIs](http://www.designinghypermediaapis.com/), but there’s still a paucity of explanations and examples of web APIs that demonstrate what this means in practice.
 
 ---
 
@@ -156,7 +152,7 @@ Discredited by the rise of linguistic universalism, the idea that language shape
 
 How does the language we use to describe web APIs influence the way we think about the design of distributed software? What does it mean to think in resources?
 
-The word ‘endpoint’ is not mentioned once in the entire text of the [Fielding dissertation](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm). It’s a word that has no relevance to the domain of REST and hypermedia, and yet it’s utterly pervasive in the software industry, despite the fact that the industry has been moving irrevocably towards REST and hypermedia over the past decade.
+The word ‘endpoint’ is not mentioned once in the entire text of the [Fielding dissertation](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm). It’s a word that has no particular relevance to the domain of REST and hypermedia, yet it’s utterly pervasive in the software industry, despite the fact that the industry has been moving irrevocably towards REST and hypermedia over the past decade.
 
 Perhaps this highlights a subtle cognitive dissonance where designers of web APIs prioritise operations and protocols over language, conceptual models and business value.
 

@@ -1,12 +1,13 @@
 GIT
   remote: git@github.com:maetl/yarrow
-  revision: f292debc1325b7772c71f62babfa895c1ad64d24
+  revision: 14f3ce486c829721ce9e055afd40ecaf899ebe2c
   specs:
-    yarrow (0.3.4)
+    yarrow (0.3.5)
       activesupport
       hashie
       mementus
       rack
+      rack-livereload
       sprockets
 
 GEM
@@ -36,21 +37,26 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
+    daemons (1.2.3)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     equalizer (0.0.11)
-    hashie (3.4.2)
+    eventmachine (1.0.8)
+    hashie (3.4.3)
     i18n (0.7.0)
     ice_nine (0.11.1)
     json (1.8.3)
+    kramdown (1.8.0)
     mementus (0.1.6)
       axiom-memory-adapter
       virtus
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
-    minitest (5.8.0)
-    mustache (1.0.1)
+    minitest (5.8.2)
+    mustache (1.0.2)
     rack (1.6.4)
+    rack-livereload (0.3.16)
+      rack
     rake (10.4.2)
     rom (0.9.1)
       equalizer (~> 0.0, >= 0.0.9)
@@ -63,7 +69,11 @@ GEM
       transproc (~> 0.3)
     rom-support (0.1.0)
       wisper (~> 1.6, >= 1.6.0)
-    sprockets (3.3.3)
+    sprockets (3.4.0)
+      rack (> 1, < 3)
+    thin (1.6.3)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0)
       rack (~> 1.0)
     thread_safe (0.3.5)
     transproc (0.3.2)
@@ -80,7 +90,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  kramdown
   mustache
   rake
   rom
+  thin
   yarrow!
+
+BUNDLED WITH
+   1.10.6
